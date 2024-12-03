@@ -1,187 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Courier+New:wght@800&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Lora&family=Raleway:wght@600&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Lora&family=Raleway:wght@600;800&display=swap');
-
 body {
-    font-family: "Lora";
-    margin: 0;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    color: #333333;
 }
 
-/* .grid-container {
-    display: grid;
-    grid-template-columns: 2fr 5fr 1fr;
-} */
- 
 .grid-container {
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 1fr 3fr;
+    min-height: 100vh;
 }
 
 .menu {
-    display: grid;
-    grid-template-rows: 2fr 1fr 4fr 1fr;
-    position: sticky;
-    top: 0;
-    background: #ff0038;
-    height: 100vh;
-}
-
-.menu h1 {
-    font-size: 50px;
-}
-
-.art {
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    background-image: url("./img/tiling4.png");
-}
-
-.art img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.menu-content {
-    padding: 0px 30px;
-    color: #eee;
-}
-
-footer li {
-    display: inline-block;
-    margin-right: 5px;
-    font-size: 150%;
-}
-
-.gallery-container>div {
+    background-color: #000000;
+    flex-direction: column;
+    color: #ffffff;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.gallery-container>div>img {
-    vertical-align: middle;
-    display: inline-block;
-
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-
+.menu-links a:hover {
+    text-decoration: underline;
 }
 
-.gallery-container {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 250px;
-    grid-auto-flow: dense;
-}
-
-.gallery-container .wide {
-    grid-column: span 2;
-}
-
-.gallery-container .tall {
-    grid-row: span 2;
-}
-
-.gallery-container .big {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-@media screen and (max-width: 1300px) {
-    .grid-container {
-        grid-template-columns: 1fr 2fr;
-    }
-    
-    .about {
-        grid-template-columns: 1fr;
-    }
-
-    .art {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .gallery-container {
-        display: inline-block;
-        gap: 10px;
-        padding: 10px;
-    }
-    
-    .gallery-container > img {
-        margin-bottom: 5px;
-    }
-    
-}
-
-h1,
-h2,
-h3 {
-    font-family: "Raleway";
-    font-size: 30px;
-    color: #ff0038;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.menu-content li {
-    padding-left: 0;
-    list-style-type: none;
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-    color: inherit;
-}
-
-footer {
-    align-self: center;
-}
-
-.portrait {
-    width: 100%;
-}
-
-.article-container {
-    margin-left: 5%;
-    margin-right: 5%;
-    font-size: 110%;
-}
-
-article {
-    background-color: rgba(241, 241, 241, 1);
-}
-
-
-.article-container p {
-    margin: 0;
-}
-
-.indent {
-    text-indent: 30px;
-}
-
-.double-indent {
-    text-indent: 60px;
-}
-
-ul {
-    list-style: disc;
-    margin-left: 20px; /* Adjust this value to control the spacing */
-    padding-left: 0; /* Remove default padding */
-    font-size: 20px;
+.content {
+    padding: 40px;
 }
 
 ul ul {
-    list-style: circle;
-    margin-left: 20px; 
-    margin-bottom: 10px;
-    font-size: 17px;
+    margin-left: 20px;
+    list-style-type: circle;
+}
+
+/* .portrait:hover {
+} */
+
+.menu:hover {
+    background-color: #ff0038;
+}
+
+.menu:hover .portrait {
+    filter: grayscale(100%) sepia(50%) hue-rotate(-30deg) saturate(200%);
 }
