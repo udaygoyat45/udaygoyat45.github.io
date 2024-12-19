@@ -44,3 +44,34 @@ canvas {
     align-items: center;
     justify-content: center;
 }
+
+/* Base styles for anchor elements */
+section a {
+    color: #007bff; /* Main link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the text bold */
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradient color */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Fill text with the gradient */
+    transition: color 0.3s ease-in-out; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect */
+  a:hover {
+    background: linear-gradient(to right, #0056b3, #007bff); /* Reverse gradient on hover */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Active state */
+  a:active {
+    background: linear-gradient(to right, #003d80, #0056b3); /* Darker gradient for active state */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Visited links */
+  a:visited {
+    color: #6c757d; /* Subtle gray for visited links */
+    -webkit-text-fill-color: initial; /* Revert gradient to solid */
+  }
