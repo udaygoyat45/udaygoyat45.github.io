@@ -2,14 +2,18 @@ let gloria
 let gloriaCopy
 let poppins
 let textlayer
-let textIndices = []
+let textIndices
 let canvas
 
-const INCREMENTY = 60
-const INCREMENTX = 430
-const HORIZONTAL_SPEED = 10
+let horizontalSpeed = 0;
+let prevMousePos = null
+
 let BUFFER
 let IMAGE_SIZE
+
+const INCREMENTY = 60
+const INCREMENTX = 429
+const MAX_HORIZONTAL_SPEED = 15
 
 function preload() {
     gloria = loadImage("./assets/portrait_cropped.png")
@@ -19,9 +23,9 @@ function preload() {
 function setup() {
     gloria = gloria.get(0, 0, 1080, 1080)
     sketchSetup(init=true)
-
     textFont(poppins)
     background(255)
+    prevMousePos = [mouseX, mouseY]
 }
 
 function draw() {
@@ -31,8 +35,12 @@ function draw() {
     textLayer.textStyle(BOLD)
     gloriaCopy.copy(gloria, 0, 0, gloria.width, gloria.height, 0, 0, gloriaCopy.width, gloriaCopy.height)
 
-    let horizontalSpeed = map(mouseY, 0, windowHeight, 0, HORIZONTAL_SPEED)
+    let cursorDelta = Math.abs(mouseX - prevMousePos[0]) + Math.abs(mouseY - prevMousePos[1])
+    prevMousePos = [mouseX, mouseY]
+    horizontalSpeed = min(MAX_HORIZONTAL_SPEED, horizontalSpeed + cursorDelta)
+    horizontalSpeed = max(0, horizontalSpeed - 1)
     let charIndex = 0
+    let direction = 1
 
     for (let k = 0; k < textIndices.length; k++) {
         let i = textIndices[k][0]
@@ -44,8 +52,8 @@ function draw() {
         charIndex++
 
         if (k > 0 && textIndices[k - 1][1] < textIndices[k][1])
-            horizontalSpeed *= -1
-        textIndices[k][0] += horizontalSpeed
+            direction *= -1
+        textIndices[k][0] += horizontalSpeed * direction
 
         if (textIndices[k][0] > gloriaCopy.width + BUFFER)
             textIndices[k][0] = -BUFFER
