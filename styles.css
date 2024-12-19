@@ -6,7 +6,7 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 2fr 3fr;
     min-height: 100vh;
 }
 
@@ -30,13 +30,17 @@ ul ul {
     list-style-type: circle;
 }
 
-/* .portrait:hover {
-} */
-
-.menu:hover {
-    background-color: #ff0038;
+canvas {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    /* display: block; Ensures no inline spacing issues */
 }
 
-.menu:hover .portrait {
-    filter: grayscale(100%) sepia(50%) hue-rotate(-30deg) saturate(200%);
+#sketch-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
