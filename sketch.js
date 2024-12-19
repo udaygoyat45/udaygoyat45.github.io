@@ -3,11 +3,12 @@ let gloriaCopy
 let poppins
 let textlayer
 let textIndices = []
+let canvas
 
 const INCREMENTY = 60
 const INCREMENTX = 430
 const HORIZONTAL_SPEED = 10
-let BUFFER;
+let BUFFER
 let IMAGE_SIZE
 
 function preload() {
@@ -16,29 +17,11 @@ function preload() {
 }
 
 function setup() {
-    const sketchHolder = document.getElementById("sketch-holder")
-    const width = sketchHolder.offsetWidth
-    let canvas = createCanvas(width, width)
-    canvas.parent('sketch-holder')
-    IMAGE_SIZE = width
-    
-    BUFFER = 0;
-    while (BUFFER < 2 * IMAGE_SIZE)
-        BUFFER += INCREMENTX
-    BUFFER -= IMAGE_SIZE
-    BUFFER /= 2
-
     gloria = gloria.get(0, 0, 1080, 1080)
-    gloria.resize(IMAGE_SIZE, IMAGE_SIZE)
-    gloriaCopy = createImage(IMAGE_SIZE, IMAGE_SIZE)
+    sketchSetup(init=true)
 
     textFont(poppins)
     background(255)
-    textLayer = createGraphics(gloria.width, gloria.height)
-
-    for (let j = 0; j < gloria.height + BUFFER; j += INCREMENTY)
-        for (let i = -BUFFER; i < gloria.width + BUFFER; i += INCREMENTX)
-            textIndices.push([i, j])
 }
 
 function draw() {
@@ -64,10 +47,10 @@ function draw() {
             horizontalSpeed *= -1
         textIndices[k][0] += horizontalSpeed
 
-        if (textIndices[k][0] > gloria.width + BUFFER)
+        if (textIndices[k][0] > gloriaCopy.width + BUFFER)
             textIndices[k][0] = -BUFFER
         if (textIndices[k][0] < -BUFFER)
-            textIndices[k][0] = gloria.width + BUFFER
+            textIndices[k][0] = gloriaCopy.width + BUFFER
     }
 
     gloriaCopy.mask(textLayer)
@@ -76,9 +59,20 @@ function draw() {
 }
 
 function windowResized() {
+    sketchSetup();
+}
+
+
+function sketchSetup(init=false) {
     const sketchHolder = document.getElementById("sketch-holder")
     const width = sketchHolder.offsetWidth
     IMAGE_SIZE = width
+
+    if (IMAGE_SIZE == 0)
+        return
+
+    if (init)
+        gloriaCopy = createImage(IMAGE_SIZE, IMAGE_SIZE)
 
     BUFFER = 0;
     while (BUFFER < 2 * IMAGE_SIZE)
@@ -86,17 +80,19 @@ function windowResized() {
     BUFFER -= IMAGE_SIZE
     BUFFER /= 2
 
-    gloria.resize(IMAGE_SIZE, IMAGE_SIZE)
     gloriaCopy.resize(IMAGE_SIZE, IMAGE_SIZE)
-    textLayer.resize(IMAGE_SIZE, IMAGE_SIZE)
-    for (let j = 0; j < gloria.height + BUFFER; j += INCREMENTY)
-        for (let i = -BUFFER; i < gloria.width + BUFFER; i += INCREMENTX)
+    textLayer = createGraphics(IMAGE_SIZE, IMAGE_SIZE)
+    textIndices = []
+    for (let j = 0; j < gloriaCopy.height + BUFFER; j += INCREMENTY)
+        for (let i = -BUFFER; i < gloriaCopy.width + BUFFER; i += INCREMENTX)
             textIndices.push([i, j])
     
-    canvas.parent('sketch-holder')
-    console.log(width)
-    resizeCanvas(width, width)
+    if (!init)
+        canvas.remove()
+    canvas = createCanvas(width, width)
+    canvas.parent("sketch-holder")
 }
+
 // function windowResized() {
 //     const sketchHolder = document.getElementById("sketch-holder")
 //     const width = sketchHolder.offsetWidth
