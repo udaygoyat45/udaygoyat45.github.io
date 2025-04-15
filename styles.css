@@ -52,6 +52,7 @@ section a {
     font-weight: bold; /* Make the text bold */
     background: linear-gradient(to right, #007bff, #0056b3); /* Gradient color */
     -webkit-background-clip: text; /* Clip background to text */
+    background-clip: text; /* Clip background to text */
     -webkit-text-fill-color: transparent; /* Fill text with the gradient */
     transition: color 0.3s ease-in-out; /* Smooth transition for hover effects */
   }
@@ -60,6 +61,7 @@ section a {
   a:hover {
     background: linear-gradient(to right, #0056b3, #007bff); /* Reverse gradient on hover */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
@@ -67,6 +69,7 @@ section a {
   a:active {
     background: linear-gradient(to right, #003d80, #0056b3); /* Darker gradient for active state */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
@@ -74,4 +77,34 @@ section a {
   a:visited {
     color: #6c757d; /* Subtle gray for visited links */
     -webkit-text-fill-color: initial; /* Revert gradient to solid */
+  }
+
+  iframe {
+    border: none;
+  }
+
+  #sketch-holder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;  /* Always a square based on the container's width */
+    background-color: black; /* Black placeholder background until the canvas appears */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* The p5.js canvas styling */
+  #sketch-holder canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;  /* Smooth fade-in */
+  }
+
+  body {
+    overflow-y: scroll;
   }

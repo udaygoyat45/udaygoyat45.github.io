@@ -72,6 +72,8 @@ function windowResized() {
 
 
 function sketchSetup(init=false) {
+    for (let i = 0; i < 1000000000; i++);
+
     const sketchHolder = document.getElementById("sketch-holder")
     const width = sketchHolder.offsetWidth
     IMAGE_SIZE = width
@@ -99,6 +101,9 @@ function sketchSetup(init=false) {
         canvas.remove()
     canvas = createCanvas(width, width)
     canvas.parent("sketch-holder")
+    setTimeout(() => {
+        canvas.elt.style.opacity = "1";
+      }, 10);
 }
 
 // function windowResized() {
