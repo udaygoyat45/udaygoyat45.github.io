@@ -105,28 +105,3 @@ function sketchSetup(init=false) {
         canvas.elt.style.opacity = "1";
       }, 10);
 }
-
-// function windowResized() {
-//     const sketchHolder = document.getElementById("sketch-holder")
-//     const width = sketchHolder.offsetWidth
-//     IMAGE_SIZE = width
-//     // canvas.resize(width, width)
-//     // resizeCanvas(width, width);
-//     // canvas.parent('sketch-holder');
-
-//     BUFFER = 0;
-//     while (BUFFER < 2 * IMAGE_SIZE)
-//         BUFFER += INCREMENTX
-//     BUFFER -= IMAGE_SIZE
-//     BUFFER /= 2
-
-//     gloria = gloria.get(0, 0, 1080, 1080)
-//     gloria.resize(IMAGE_SIZE, IMAGE_SIZE)
-//     gloriaCopy = createImage(IMAGE_SIZE, IMAGE_SIZE)
-
-//     textLayer = createGraphics(gloria.width, gloria.height)
-
-//     for (let j = 0; j < gloria.height + BUFFER; j += INCREMENTY)
-//         for (let i = -BUFFER; i < gloria.width + BUFFER; i += INCREMENTX)
-//             textIndices.push([i, j])
-// }

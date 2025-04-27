@@ -5,99 +5,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uday Goyat</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
-    <script src="./sketch.js"></script>
+    <script src="perlin_lines.js"></script>
+
+    <!-- Style Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <div class="grid-container">
-        <div class="menu">
+<body class="overflow-y-scroll">
+    <div class="grid grid-cols-[2fr_3fr] min-h-screen">
+        <div class="bg-white flex flex-col">
             <div id="sketch-holder" class="m-0 p-0"></div>
             <div class="p-5">
-                <h1 class="menu-title text-5xl">Uday Goyat</h1>
-                <nav class="menu-links text-lg">
+                <h1 class="menu-title mb-3 text-5xl font-lora">Uday Goyat</h1>
+                <nav class="text-lg">
                     <ul>
-                        <li><a href="./resume.pdf" target="_blank">Resume</a></li>
-                        <li><a href="https://www.linkedin.com/in/uday-goyat-6088a2177"
-                                aria-label="LinkedIn">LinkedIn</a>
+                        <li><a href="resume.pdf" target="_blank" class="hover:underline">Resume</a></li>
+                        <li><a href="https://www.linkedin.com/in/uday-goyat-6088a2177" aria-label="LinkedIn"
+                                class="hover:underline">LinkedIn</a>
                         </li>
-                        <li><a href="https://www.youtube.com/channel/UCB9zbZBY_6MBwtI3PH1pjWw"
-                                aria-label="YouTube">YouTube</a></li>
-                        <li><a href="https://github.com/udaygoyat45" aria-label="GitHub">GitHub</a></li>
+                        <li><a href="https://www.youtube.com/channel/UCB9zbZBY_6MBwtI3PH1pjWw" aria-label="YouTube"
+                                class="hover:underline">YouTube</a></li>
+                        <li><a href="https://github.com/udaygoyat45" aria-label="GitHub"
+                                class="hover:underline">GitHub</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
 
-        <div class="ml-10 mt-3">
-            <section>
-                <h2 class="text-5xl">Education</h2>
-                <ul>
-                    <li class="font-bold">Georgia Institute of Technology (2022 - Present)</li>
-                    <ul>
-                        <li>Info-Internetworks, Devices, and Computing Systems</li>
-                    </ul>
-                </section>
-
-            <section class="mt-3">
-                <h2 class="text-5xl">Experience</h2>
-                <ul>
-                    <li class="font-bold">NVIDIA - GPU C++ Development Tools Intern (September 2024 - December 2024)</li>
-                    <ul>
-                        <li>Simulated GPU chips in C++ on the Architectural Modeling (AModel) team responsible for debugging
-                            and testing.</li>
-                        <li>Utilized template meta-programming in C++ to inline virtual function calls, increasing Amodel
-                            speed upto 15%.</li>
-                        <li>Implemented a load-balancing algorithm for NVIDIA's Blackwell and Hopper GPUs, passing 300+
-                            directed tests.</li>
-                        <li>Developed C++ infrastructure to support 2000+ configurable ”knobs” for GPU architecture</li>
-                    </ul>
-
-                    <li class="mt-5 font-bold">Ramp - Backend Engineer Intern (May 2024 - August 2024)</li>
-                    <ul>
-                        <li>Implemented support for 1.0% cashback on Ramp's cards, increasing client acquisition and customer base.</li>
-                        <li>Reduced approval latency for new businesses on Ramp, enabling 5% in-session auto-approvals post-application.
-                        </li>
-                        <li>Identified 106 potential delinquent businesses before onboarding for Ramp's services, preventing $100K+ in
-                            fraud.</li>
-                        <li>Developed API endpoints to identify and correct potentially transaction mislabels with 93% accuracy.</li>
-                    </ul>
-
-                    <li class="mt-5 font-bold">MathWorks - Software Engineer Intern (May 2023 - August 2023)</li>
-                    <ul>
-                        <li>Created testing framework to run 6000+ tests which resolved 40+ critical bugs concerning visual signal data in
-                            Simulink.</li>
-                        <li>Added automation tools like dragging, clicking and visual result verification to the internal JavaScript testing
-                            framework.</li>
-                        <li>Designed a scalable web app to visually verify 45,000 signal data points, check the test statistics, and report
-                            failed tests.</li>
-                    </ul>
-                </ul>
+        <div class="p-5">
+            <section class="w-11/12 max-w-5xl mx-auto mb-8 overflow-x-auto relative">
+                <h2 class="text-3xl mb-2 font-lora">About Me</h2>
+                <p class="text-base">I would love to write an excerpt, but life is too dynamic. I don't feel like updating
+                    this every month. However, exciting things coming soon. Trust. <span class="italic">In the meantime,
+                        contact me here: udaygoyat45@gmail.com</span></p>
             </section>
 
-            <section class="mt-5">
-                <h2 class="text-5xl">Notable Projects</h2>
-                <ul>
-                    <li class="font-bold">The President is Dead</li>
-                    <ul>
-                        <li>Webscraped 10 million+ comments on Twitter using BeautifulSoup and Scrapy to gain insights into an online narrative.</li>
-                        <li>Utilized BERT models for topic modeling, sentiment analysis, and graph algorithms to identify 7 narrative proponents</li>
-                    </ul>
-                </ul>
-                <ul>
-                    <li class="font-bold mt-3">Polyphonic Pitch Detection</li>
-                    <ul>
-                        <li>Utilized PortAudio, Armadillo (C++), NumPy, and Scipy to implement 5 pitch detection algorithms.</li>
-                        <li>Generated annotated pitches with 98% accuracy for over 960 minutes of vocal ensemble music.</li>
-                        <li>Presented in ISMIR 2022 Conference: <a href="https://archives.ismir.net/ismir2022/paper/000042.pdf">https://archives.ismir.net/ismir2022/paper/000042.pdf</a></li>
-                    </ul>
+            <section class="w-11/12 max-w-5xl mx-auto mb-8 overflow-x-auto relative">
+                <h2 class="text-3xl mb-2 font-lora">Education</h2>
+                <p class="text-lg">Georgia Institute of Technology </p>
+                <p class="text-base">Threads: Information-Internetworks + Devices</p>
+                <p class="text-gray-400">Fall 2022 - Spring 2025</p>
+            </section>
 
-                </ul>
-                </section>
-            </div>
+            <section class="w-11/12 max-w-5xl mx-auto mb-8 overflow-x-auto relative">
+                <h2 class="text-3xl mb-4 font-lora">Experience</h2>
+
+                <div class="grid gap-6 md:grid-cols-3">
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-l">
+                            <h3 class="text-lg font-semibold mb-1">Upcoming...</h3>
+                            <p class="text-sm">Software | Web Automation </p>
+                            <p class="text-sm text-gray-400 mt-auto">Fall 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <h3 class="text-lg font-semibold mb-1">Upcoming...</h3>
+                            <p class="text-sm">Software | Finance </p>
+                            <p class="text-sm text-gray-400 mt-auto">Summer 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <img src="assets/logos/nvidia.svg" alt="NVIDIA logo"
+                                    class="w-7 h-7 object-contain flex-shrink-0" />
+                                <h3 class="text-lg font-semibold mb-1">NVIDIA</h3>
+                            </div>
+                            <p class="text-sm">GPU Dev | AModel </p>
+                            <p class="text-sm text-gray-400 mt-auto">Fall 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <img src="assets/logos/ramp.svg" alt="Ramp logo"
+                                    class="w-7 h-7 object-contain flex-shrink-0" />
+                                <h3 class="text-lg font-semibold mb-1">Ramp</h3>
+                            </div>
+                            <p class="text-sm">Backend | Core Risk</p>
+                            <p class="text-sm text-gray-400 mt-auto">Summer 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <div class="flex items-center space-x-4 mb-2">
+                                <img src="assets/logos/matlab.svg" alt="MathWorks logo"
+                                    class="w-7 h-7 object-contain flex-shrink-0" />
+                                <h3 class="text-lg font-semibold mb-1">MathWorks</h3>
+                            </div>
+                            <p class="text-sm">Software | Simulink </p>
+                            <p class="text-sm text-gray-400 mt-auto">Summer 2023</p>
+                        </div>
+                    </div>
+            </section>
+
+
+            <section class="w-11/12 max-w-5xl mx-auto mb-8 overflow-x-auto relative">
+                <h2 class="text-3xl mb-4 font-lora">Notable Projects</h2>
+
+                <div class="grid gap-6 md:grid-cols-3">
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <!-- <h3 class="text-xl font-semibold mb-1">TRNG</h3> -->
+                            <p class="text-lg mb-1 font-semibold">
+                                <a href="trng.pdf" class="text-blue-500 hover:underline">TRNG</a>
+                            </p>
+                            <p class="text-sm mb-2">true random number generation through avalance breakdown</p>
+                            <p class="text-sm text-gray-400 mt-auto">April 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <p class="text-lg mb-1 font-semibold">
+                                <a class="text-blue-500 hover:underline"
+                                    href="https://github.com/udaygoyat45/uday_multiagent">
+                                    TaskWeaver
+                                </a>
+                            </p>
+                            <p class="text-sm mb-2">web automation with stagehand coupled with task dependency generation
+                            </p>
+                            <p class="text-sm text-gray-400 mt-auto">April 2025</p>
+                        </div>
+                    </div>
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <p class="text-lg font-semibold mb-1">
+                                <a class="text-blue-500 hover:underline" href="https://github.com/udaygoyat45/docktrack">
+                                    DockTracker
+                                </a>
+                            </p>
+                            <p class="text-sm mb-2">cli program to track undocumented features within a large project</p>
+                            <p class="text-sm text-gray-400 mt-auto">May 2025</p>
+                        </div>
+                    </div>
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <p class="text-lg font-semibold mb-1">
+                                <a class="text-blue-500 hover:underline" href="https://journalqd.org/">
+                                    The President is Dead
+                                </a>
+                            </p>
+                            <p class="text-sm mb-2">investigating a rumor that spread like wildfire in Nigeria</p>
+                            <p class="text-sm text-gray-400 mt-auto">May 2025</p>
+                        </div>
+                    </div>
+                    <div class="border border-gray-300 rounded-lg p-4 transition transform hover:scale-105 hover:shadow-lg hover:bg-gray-100 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <p class="text-lg font-semibold mb-1">
+                                <a class="text-blue-500 hover:underline" href="https://zenodo.org/records/7316672">
+                                    Polyphonic Pitch Detection
+                                </a>
+                            </p>
+                            <p class="text-sm mb-2">created a dataset to support ml research on detecting multiple pitches from music files</p>
+                            <p class="text-sm text-gray-400 mt-auto">December 2022</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
         </div>
-
-        <style> iframe{ border: none; } </style>
+    </div>
 </body>
+
+</html>
