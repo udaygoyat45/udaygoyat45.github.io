@@ -66,12 +66,15 @@ function setup() {
 
 function reset() {
     noiseDetail(2);
-    amax = random(5);
-    a1 = random(1, amax);
-    a2 = random(1, amax);
-    a3 = random(1, amax);
-    a4 = random(1, amax);
-    a5 = 10;
+    // amax = random(5);
+    amin = 2;
+    amax = 4;
+    a1 = random(amin, amax);
+    a2 = random(amin, amax);
+    a3 = random(amin, amax);
+    a4 = random(amin, amax);
+    // a5 = 10;
+    a5 = 3;
     for (var i = 0; i < nmobiles; i++) {
         mobiles[i] = new Mobile(i);
     }
