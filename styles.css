@@ -1,3 +1,18 @@
-.font-lora {
-    font-family: 'Lora', serif;
+:root {
+    /* Modern editorial: expressive serif + crisp sans. */
+    --font-display: "Fraunces", "Playfair Display", serif;
+    --font-body: "Manrope", "Source Sans 3", system-ui, -apple-system, sans-serif;
+    --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
 }
