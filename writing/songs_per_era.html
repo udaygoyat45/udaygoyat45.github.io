@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Songs Per Era — Uday Goyat</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
-    <script src="../perlin_lines.js"></script>
-    <script data-goatcounter="https://proug.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -19,79 +14,52 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="overflow-y-scroll">
-    <div class="flex min-h-screen">
-        <div class="bg-white flex flex-col fixed w-2/5 h-screen">
-            <a href="../index.html">
-                <div id="sketch-holder" class="m-0 p-0"></div>
-            </a>
-            <div class="p-5">
-                <h1 class="mb-3 text-5xl md:text-6xl font-display">Uday Goyat</h1>
-                <nav class="text-sm tracking-wide">
-                    <ul class="space-y-1">
-                        <li><a href="../resume.pdf" target="_blank" class="hover:underline">Resume</a></li>
-                        <li><a href="https://www.linkedin.com/in/udaygoyat" aria-label="LinkedIn"
-                                class="hover:underline">LinkedIn</a></li>
-                        <li><a href="https://www.youtube.com/channel/UCB9zbZBY_6MBwtI3PH1pjWw" aria-label="YouTube"
-                                class="hover:underline">YouTube</a></li>
-                        <li><a href="https://github.com/udaygoyat45" aria-label="GitHub"
-                                class="hover:underline">GitHub</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<body>
+    <div class="page">
+        <div id="site-sidebar" data-root="../"></div>
 
-        <div class="p-5 ml-[40%] w-3/5">
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <p class="text-xs text-gray-400 mb-4">
-                    <a href="../index.html" class="hover:text-black hover:underline transition-colors">← home</a>
-                </p>
+        <div class="main">
+            <section class="main-inner section">
+                <a class="back-home" data-site-home></a>
+                <h2 class="font-display section-title">Songs Per Era</h2>
+                <p class="text-sm text-muted" style="margin-bottom: 1.5rem">IYKYK.</p>
 
-                <h2 class="text-4xl mb-1.5 font-display">Songs Per Era</h2>
-                <p class="text-sm text-gray-500 mb-6">IYKYK.</p>
-
-                <!--
-                  Spotify embeds are dark / album-tinted only — no clean white player.
-                  Text links match the site better than black iframes.
-                -->
-                <div class="divide-y divide-gray-200">
-                    <div class="py-4 flex items-start justify-between gap-4">
+                <div class="list-rows">
+                    <div class="list-row">
                         <div>
-                            <p class="text-sm mb-0.5">
+                            <p class="list-row__title">
                                 <a href="https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
-                                    target="_blank" rel="noreferrer"
-                                    class="hover:underline">Daisies</a>
+                                    target="_blank" rel="noreferrer">Daisies</a>
                             </p>
-                            <p class="text-xs text-gray-500">Justin Bieber</p>
-                            <p class="text-xs mt-2">
-                                <a href="https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
-                                    target="_blank" rel="noreferrer"
-                                    class="text-[#1DB954] hover:underline">spotify ↗</a>
+                            <p class="list-row__sub">Justin Bieber</p>
+                            <p style="margin-top: 0.5rem">
+                                <a class="link-spotify" href="https://open.spotify.com/track/5BZsQlgw21vDOAjoqkNgKb"
+                                    target="_blank" rel="noreferrer">spotify ↗</a>
                             </p>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Summer 2025</p>
+                        <p class="list-row__meta">Summer 2025</p>
                     </div>
 
-                    <div class="py-4 flex items-start justify-between gap-4">
+                    <div class="list-row">
                         <div>
-                            <p class="text-sm mb-0.5">
+                            <p class="list-row__title">
                                 <a href="https://open.spotify.com/track/2dZCy8ZNoevYwrqCcZWxcq"
-                                    target="_blank" rel="noreferrer"
-                                    class="hover:underline">Hone Do Jo Hota Hai</a>
+                                    target="_blank" rel="noreferrer">Hone Do Jo Hota Hai</a>
                             </p>
-                            <p class="text-xs text-gray-500">OAFF, Savera, Javed Akhtar, Lothika</p>
-                            <p class="text-xs mt-2">
-                                <a href="https://open.spotify.com/track/2dZCy8ZNoevYwrqCcZWxcq"
-                                    target="_blank" rel="noreferrer"
-                                    class="text-[#1DB954] hover:underline">spotify ↗</a>
+                            <p class="list-row__sub">OAFF, Savera, Javed Akhtar, Lothika</p>
+                            <p style="margin-top: 0.5rem">
+                                <a class="link-spotify" href="https://open.spotify.com/track/2dZCy8ZNoevYwrqCcZWxcq"
+                                    target="_blank" rel="noreferrer">spotify ↗</a>
                             </p>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Jan–Aug 2026</p>
+                        <p class="list-row__meta">Jan–Aug 2026</p>
                     </div>
                 </div>
             </section>
         </div>
     </div>
+
+    <script src="../site.js"></script>
 </body>
 
 </html>

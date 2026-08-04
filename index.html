@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uday Goyat</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
-    <script src="perlin_lines.js"></script>
-    <script data-goatcounter="https://proug.goatcounter.com/count"
-    async src="//gc.zgo.at/count.js"></script>
-
-    <!-- Style Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,211 +14,166 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="overflow-y-scroll">
-    <div class="flex min-h-screen">
-        <div class="bg-white flex flex-col fixed w-2/5 h-screen">
-            <a href="./index.html">
-                <div id="sketch-holder" class="m-0 p-0">
-                </div>
-            </a>
-            <div class="p-5">
-                <h1 class="mb-3 text-5xl md:text-6xl font-display">Uday Goyat</h1>
-                <nav class="text-sm tracking-wide">
-                    <ul class="space-y-1">
-                        <li><a href="resume.pdf" target="_blank" class="hover:underline">Resume</a></li>
-                        <li><a href="https://www.linkedin.com/in/udaygoyat" aria-label="LinkedIn"
-                                class="hover:underline">LinkedIn</a>
-                        </li>
-                        <li><a href="https://www.youtube.com/channel/UCB9zbZBY_6MBwtI3PH1pjWw" aria-label="YouTube"
-                                class="hover:underline">YouTube</a></li>
-                        <li><a href="https://github.com/udaygoyat45" aria-label="GitHub"
-                                class="hover:underline">GitHub</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<body>
+    <div class="page">
+        <div id="site-sidebar" data-root="./"></div>
 
-        <div class="p-5 ml-[40%] w-3/5">
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <h2 class="text-4xl mb-1.5 font-display">About</h2>
-                <div class="text-sm space-y-1">
+        <div class="main">
+            <section class="main-inner section">
+                <h2 class="font-display section-title">About</h2>
+                <div class="text-sm">
                     <p>research in sf.</p>
-                    <p class="text-gray-400">
-                        <a href="mailto:udaygoyat45@gmail.com" class="hover:text-black hover:underline transition-colors">udaygoyat45@gmail.com</a>
+                    <p class="text-faint">
+                        <a href="mailto:udaygoyat45@gmail.com">udaygoyat45@gmail.com</a>
                     </p>
                 </div>
             </section>
 
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <h2 class="text-4xl mb-1.5 font-display">Education</h2>
+            <section class="main-inner section">
+                <h2 class="font-display section-title">Education</h2>
                 <p class="text-sm">B.S./M.S. Computer Science @ Georgia Institute of Technology</p>
-                <p class="text-sm text-gray-500">Threads: Information-Internetworks + Devices | Computing Systems</p>
-                <p class="text-sm text-gray-400 mt-1">Fall 2022 – December 2025</p>
+                <p class="text-sm text-muted">Threads: Information-Internetworks + Devices | Computing Systems</p>
+                <p class="text-sm text-faint" style="margin-top: 0.25rem">Fall 2022 – December 2025</p>
             </section>
 
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <h2 class="text-4xl mb-3 font-display">Experience</h2>
-
-                <div class="divide-y divide-gray-200">
-                    <div class="py-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/logos/jane_street.svg" alt="Jane Street logo"
-                                class="w-7 h-7 object-contain flex-shrink-0" />
+            <section class="main-inner section">
+                <h2 class="font-display section-title" style="margin-bottom: 0.75rem">Experience</h2>
+                <div class="list-rows">
+                    <div class="list-row list-row--center">
+                        <div class="list-row__left">
+                            <img class="list-row__logo" src="assets/logos/jane_street.svg" alt="Jane Street logo">
                             <div>
-                                <p class="text-sm">Jane Street</p>
-                                <p class="text-xs text-gray-500">Infra | Tooling</p>
+                                <p class="list-row__title">Jane Street</p>
+                                <p class="list-row__sub">Infra | Tooling</p>
                             </div>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Summer 2025</p>
+                        <p class="list-row__meta">Summer 2025</p>
                     </div>
-
-                    <div class="py-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/logos/nvidia.svg" alt="NVIDIA logo"
-                                class="w-7 h-7 object-contain flex-shrink-0" />
+                    <div class="list-row list-row--center">
+                        <div class="list-row__left">
+                            <img class="list-row__logo" src="assets/logos/nvidia.svg" alt="NVIDIA logo">
                             <div>
-                                <p class="text-sm">NVIDIA</p>
-                                <p class="text-xs text-gray-500">GPU Dev | AModel</p>
+                                <p class="list-row__title">NVIDIA</p>
+                                <p class="list-row__sub">GPU Dev | AModel</p>
                             </div>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Fall 2024</p>
+                        <p class="list-row__meta">Fall 2024</p>
                     </div>
-
-                    <div class="py-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/logos/ramp.svg" alt="Ramp logo"
-                                class="w-7 h-7 object-contain flex-shrink-0" />
+                    <div class="list-row list-row--center">
+                        <div class="list-row__left">
+                            <img class="list-row__logo" src="assets/logos/ramp.svg" alt="Ramp logo">
                             <div>
-                                <p class="text-sm">Ramp</p>
-                                <p class="text-xs text-gray-500">Backend | Core Risk</p>
+                                <p class="list-row__title">Ramp</p>
+                                <p class="list-row__sub">Backend | Core Risk</p>
                             </div>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Summer 2024</p>
+                        <p class="list-row__meta">Summer 2024</p>
                     </div>
-
-                    <div class="py-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <img src="assets/logos/matlab.svg" alt="MathWorks logo"
-                                class="w-7 h-7 object-contain flex-shrink-0" />
+                    <div class="list-row list-row--center">
+                        <div class="list-row__left">
+                            <img class="list-row__logo" src="assets/logos/matlab.svg" alt="MathWorks logo">
                             <div>
-                                <p class="text-sm">MathWorks</p>
-                                <p class="text-xs text-gray-500">Software | Simulink</p>
+                                <p class="list-row__title">MathWorks</p>
+                                <p class="list-row__sub">Software | Simulink</p>
                             </div>
                         </div>
-                        <p class="text-xs text-gray-400 whitespace-nowrap">Summer 2023</p>
+                        <p class="list-row__meta">Summer 2023</p>
                     </div>
                 </div>
             </section>
 
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <h2 class="text-4xl mb-6 font-display">Projects</h2>
-
-                <div class="grid gap-6 md:grid-cols-3">
-                    <a href="portolio/friendly_surveillance.html"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">FriendlySurveillance</p>
-                            <p class="text-xs mb-2 text-gray-600">accountability assistant for daily tasks</p>
-                            <p class="text-xs text-gray-400 mt-auto">January 2026</p>
+            <section class="main-inner section">
+                <h2 class="font-display section-title section-title--spacious">Projects</h2>
+                <div class="card-grid">
+                    <a class="card" href="portfolio/friendly_surveillance.html">
+                        <div class="card__body">
+                            <p class="card__title">FriendlySurveillance</p>
+                            <p class="card__desc">accountability assistant for daily tasks</p>
+                            <p class="card__date">January 2026</p>
                         </div>
                     </a>
-
-                    <a href="https://github.com/udaygoyat45/dirscribe" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">DirScribe</p>
-                            <p class="text-xs mb-2 text-gray-600">project context for llms</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+                    <a class="card" href="https://github.com/udaygoyat45/dirscribe" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">DirScribe</p>
+                            <p class="card__desc">project context for llms</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-
-                    <a href="trng.pdf" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">TRNG</p>
-                            <p class="text-xs mb-2 text-gray-600">hardware true rng via avalanche noise</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+                    <a class="card" href="trng.pdf" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">TRNG</p>
+                            <p class="card__desc">hardware true rng via avalanche noise</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-
-                    <a href="https://github.com/udaygoyat45/uday_multiagent" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">TaskWeaver</p>
-                            <p class="text-xs mb-2 text-gray-600">multi-agent web automation</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+                    <a class="card" href="https://github.com/udaygoyat45/uday_multiagent" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">TaskWeaver</p>
+                            <p class="card__desc">multi-agent web automation</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-                    <a href="https://github.com/udaygoyat45/docktrack" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">DockTracker</p>
-                            <p class="text-xs mb-2 text-gray-600">cli for undocumented features</p>
-                            <p class="text-xs text-gray-400 mt-auto">May 2025</p>
+                    <a class="card" href="https://github.com/udaygoyat45/docktrack" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">DockTracker</p>
+                            <p class="card__desc">cli for undocumented features</p>
+                            <p class="card__date">May 2025</p>
                         </div>
                     </a>
-                    <a href="https://journalqd.org/" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">The President is Dead</p>
-                            <p class="text-xs mb-2 text-gray-600">tracing a rumor in nigeria</p>
-                            <p class="text-xs text-gray-400 mt-auto">May 2025</p>
+                    <a class="card" href="https://journalqd.org/" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">The President is Dead</p>
+                            <p class="card__desc">tracing a rumor in nigeria</p>
+                            <p class="card__date">May 2025</p>
                         </div>
                     </a>
-                    <a href="https://zenodo.org/records/7316672" target="_blank" rel="noreferrer"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">Polyphonic Pitch Detection</p>
-                            <p class="text-xs mb-2 text-gray-600">ml dataset for multi-pitch audio</p>
-                            <p class="text-xs text-gray-400 mt-auto">December 2022</p>
+                    <a class="card" href="https://zenodo.org/records/7316672" target="_blank" rel="noreferrer">
+                        <div class="card__body">
+                            <p class="card__title">Polyphonic Pitch Detection</p>
+                            <p class="card__desc">ml dataset for multi-pitch audio</p>
+                            <p class="card__date">December 2022</p>
                         </div>
                     </a>
                 </div>
             </section>
 
-            <section class="w-10/12 max-w-5xl mx-auto mb-7 overflow-x-auto relative">
-                <h2 class="text-4xl mb-6 font-display">Writing</h2>
-
-                <div class="grid gap-6 md:grid-cols-3">
-                    <a href="writing/best_resources.html"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">CS Resources</p>
-                            <p class="text-xs mb-2 text-gray-600">starter kit for undergrad cs</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+            <section class="main-inner section">
+                <h2 class="font-display section-title section-title--spacious">Writing</h2>
+                <div class="card-grid">
+                    <a class="card" href="writing/best_resources.html">
+                        <div class="card__body">
+                            <p class="card__title">CS Resources</p>
+                            <p class="card__desc">starter kit for undergrad cs</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-
-                    <a href="writing/generative.html"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">Generative Art</p>
-                            <p class="text-xs mb-2 text-gray-600">sketches and experiments</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+                    <a class="card" href="writing/generative.html">
+                        <div class="card__body">
+                            <p class="card__title">Generative Art</p>
+                            <p class="card__desc">sketches and experiments</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-
-                    <a href="writing/fullmetal.html"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">Fullmetal Alchemist</p>
-                            <p class="text-xs mb-2 text-gray-600">why brotherhood is worth it</p>
-                            <p class="text-xs text-gray-400 mt-auto">April 2025</p>
+                    <a class="card" href="writing/fullmetal.html">
+                        <div class="card__body">
+                            <p class="card__title">Fullmetal Alchemist</p>
+                            <p class="card__desc">why brotherhood is worth it</p>
+                            <p class="card__date">April 2025</p>
                         </div>
                     </a>
-
-                    <a href="writing/songs_per_era.html"
-                        class="block border border-gray-300 rounded-lg p-4 transition transform hover:shadow-lg hover:bg-gray-100">
-                        <div class="flex flex-col h-full">
-                            <p class="text-sm mb-1">Songs Per Era</p>
-                            <p class="text-xs mb-2 text-gray-600">one track per era</p>
-                            <p class="text-xs text-gray-400 mt-auto">ongoing</p>
+                    <a class="card" href="writing/songs_per_era.html">
+                        <div class="card__body">
+                            <p class="card__title">Songs Per Era</p>
+                            <p class="card__desc">one track per era</p>
+                            <p class="card__date">ongoing</p>
                         </div>
                     </a>
                 </div>
             </section>
         </div>
     </div>
+
+    <script src="site.js"></script>
 </body>
 
 </html>
