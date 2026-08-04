@@ -1,12 +1,21 @@
 :root {
-    /* Modern editorial: high-contrast serif + structured sans. */
-    --font-display: "Cormorant Garamond", "Playfair Display", serif;
-    --font-body: "IBM Plex Sans", "Source Sans 3", system-ui, -apple-system, sans-serif;
+    /* Serif only for titles; monospace everywhere else.
+       Cormorant Garamond: open, high-contrast display; pairs cleanly with Space Mono. */
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
     --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 body {
-    font-family: var(--font-body);
+    font-family: var(--font-mono);
+    font-size: 0.925rem;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+}
+
+/* Space Mono bold is clunky at UI sizes — keep mono regular; hierarchy via color/size */
+b, strong, .font-bold {
+    font-weight: 400;
 }
 
 #sketch-holder {
@@ -14,10 +23,56 @@ body {
     aspect-ratio: 1 / 1;
 }
 
+/* Soft dissolve only on the right; top/left/bottom stay hard-cut */
+#sketch-holder canvas {
+    display: block;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 58%,
+        rgba(0, 0, 0, 0.55) 78%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        #000 0%,
+        #000 58%,
+        rgba(0, 0, 0, 0.55) 78%,
+        transparent 100%
+    );
+}
+
 .font-display {
     font-family: var(--font-display);
+    font-weight: 500;
+    font-style: normal;
+    font-synthesis: none;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+}
+
+h1.font-display {
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.005em;
+}
+
+h2.font-display {
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0.015em;
+    /* Do not set margin here — it overrides Tailwind mb-* under the title */
 }
 
 .font-mono {
     font-family: var(--font-mono);
+}
+
+/* Local Space Mono fallback when Google Fonts is slow/unavailable */
+@font-face {
+    font-family: "Space Mono";
+    src: url("assets/SpaceMono-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
