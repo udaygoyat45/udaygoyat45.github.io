@@ -217,14 +217,7 @@
         mountCanvas(false);
     };
 
-    window.mousePressed = function () {
-        if (
-            mouseX >= 0 &&
-            mouseX <= width &&
-            mouseY >= 0 &&
-            mouseY <= height
-        ) {
-            resetField();
-        }
-    };
+    // Intentionally no mousePressed reset: the canvas sits inside a link that
+    // navigates/reloads the page. Resetting here would flash a second restart
+    // before the navigation completes.
 })();

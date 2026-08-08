@@ -223,7 +223,11 @@ h2.font-display {
 }
 
 .site-sidebar__meta {
-    padding: var(--space-4) var(--page-pad) var(--space-5);
+    /* Sit up into the canvas fade so title and sketch feel continuous */
+    margin-top: -2.75rem;
+    padding: 0 var(--page-pad) var(--space-5);
+    position: relative;
+    z-index: 1;
     text-align: center;
 }
 
@@ -510,29 +514,48 @@ h2.font-display {
         max-height: none;
     }
 
-    /* Desktop: dissolve toward main column (right edge) */
+    /* Desktop: dissolve toward main column (right) and toward title (bottom) */
     .sketch-holder canvas {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        -webkit-mask-image: linear-gradient(
-            to right,
-            #000 0%,
-            #000 58%,
-            rgba(0, 0, 0, 0.55) 78%,
-            transparent 100%
-        );
-        mask-image: linear-gradient(
-            to right,
-            #000 0%,
-            #000 58%,
-            rgba(0, 0, 0, 0.55) 78%,
-            transparent 100%
-        );
+        -webkit-mask-image:
+            linear-gradient(
+                to right,
+                #000 0%,
+                #000 84%,
+                rgba(0, 0, 0, 0.45) 94%,
+                transparent 100%
+            ),
+            linear-gradient(
+                to bottom,
+                #000 0%,
+                #000 54%,
+                rgba(0, 0, 0, 0.5) 76%,
+                transparent 100%
+            );
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(
+                to right,
+                #000 0%,
+                #000 84%,
+                rgba(0, 0, 0, 0.45) 94%,
+                transparent 100%
+            ),
+            linear-gradient(
+                to bottom,
+                #000 0%,
+                #000 54%,
+                rgba(0, 0, 0, 0.5) 76%,
+                transparent 100%
+            );
+        mask-composite: intersect;
     }
 
     .site-sidebar__meta {
-        padding: var(--space-5);
+        margin-top: -3.5rem;
+        padding: 0 var(--space-5) var(--space-5);
         text-align: left;
     }
 
