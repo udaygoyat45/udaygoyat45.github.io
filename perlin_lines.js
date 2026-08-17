@@ -1,13 +1,28 @@
 /**
  * Perlin flow-field sketch — graphite lines accumulate live.
  * Mounts into #sketch-holder (created by site.js).
+ * Default recipe: Random 8 (from sketch-lab).
  */
 (function () {
     "use strict";
 
-    var N_MOBILES = 640;
-    var INK_DARK = 22;
-    var INK_LIGHT = 95;
+    // Random 8 recipe
+    var N_MOBILES = 1088;
+    var INK_DARK = 5;
+    var INK_LIGHT = 74;
+    var ALPHA_MIN = 26;
+    var ALPHA_MAX = 86;
+    var A_MIN = 1.2249583699813624;
+    var A_MAX = 3.26618804019157;
+    var A5_MIN = 2.032027991828462;
+    var A5_MAX = 3.381026224508914;
+    var CURL = 2.4696281526750123;
+    var NOISE_OCTAVES = 5;
+    var NOISE_FALLOFF = 0.6864426824209959;
+    var WEIGHT_SCALE = 0.7853325546518085;
+    var SPEED_JITTER_MIN = 0.7195610208520593;
+    var SPEED_JITTER_MAX = 1.21380852024257;
+    var INK_BIAS = 11;
 
     var mobiles = [];
     var a1, a2, a3, a4, a5;
@@ -24,9 +39,9 @@
         );
         this.position = this.position0.copy();
         this.velocity = createVector(0, 0);
-        this.alpha = random(32, 72);
-        this.speedJitter = random(0.85, 1.2);
-        this.inkBias = random(-10, 10);
+        this.alpha = random(ALPHA_MIN, ALPHA_MAX);
+        this.speedJitter = random(SPEED_JITTER_MIN, SPEED_JITTER_MAX);
+        this.inkBias = random(-INK_BIAS, INK_BIAS);
     };
 
     Mobile.prototype.update = function () {
@@ -51,7 +66,7 @@
         this.velocity = createVector(vx, vy);
         this.velocity.mult(a5 * this.speedJitter);
 
-        var curl = (noise(a1 + nx * a3, a1 + ny * a2) - 0.5) * 1.15;
+        var curl = (noise(a1 + nx * a3, a1 + ny * a2) - 0.5) * CURL;
         this.velocity.rotate(curl);
 
         this.position0 = this.position.copy();
@@ -67,7 +82,7 @@
 
         var spd = this.velocity.mag();
         var wt = map(spd, 0, a5 * 1.5, 0.7, 0.22, true);
-        wt *= constrain(width / 520, 0.7, 1.8);
+        wt *= constrain(width / 520, 0.7, 1.8) * WEIGHT_SCALE;
 
         stroke(ink, this.alpha);
         strokeWeight(wt);
@@ -102,16 +117,14 @@
     }
 
     function resetField() {
-        noiseDetail(3, 0.55);
+        noiseDetail(NOISE_OCTAVES, NOISE_FALLOFF);
         noiseSeed(floor(random(100000)));
 
-        var amin = 1.5;
-        var amax = 3.5;
-        a1 = random(amin, amax);
-        a2 = random(amin, amax);
-        a3 = random(amin, amax);
-        a4 = random(amin, amax);
-        a5 = random(2.8, 3.8);
+        a1 = random(A_MIN, A_MAX);
+        a2 = random(A_MIN, A_MAX);
+        a3 = random(A_MIN, A_MAX);
+        a4 = random(A_MIN, A_MAX);
+        a5 = random(A5_MIN, A5_MAX);
 
         mobiles = [];
         for (var i = 0; i < N_MOBILES; i++) {

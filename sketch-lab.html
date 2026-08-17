@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch Lab — Perlin lines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #111;
+            --muted: #6b7280;
+            --line: #e5e7eb;
+            --bg: #fafafa;
+            --card: #fff;
+            --accent: #2563eb;
+            --pick: #059669;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Space Mono", ui-monospace, Menlo, monospace;
+            font-size: 12px;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.45;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(250, 250, 250, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.65rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        header p {
+            margin: 0.15rem 0 0;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        button, select {
+            font: inherit;
+            font-size: 11px;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink);
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover { border-color: #9ca3af; }
+        button.primary {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+        button.primary:hover { background: #333; }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            padding: 1.25rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .cell {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .cell.is-picked {
+            border-color: var(--pick);
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+        }
+
+        .cell__canvas {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #fff;
+            position: relative;
+        }
+
+        .cell__canvas canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .cell__body {
+            padding: 0.65rem 0.75rem 0.75rem;
+            border-top: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            flex: 1;
+        }
+
+        .cell__title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .cell__params {
+            color: var(--muted);
+            font-size: 10px;
+            word-break: break-word;
+            white-space: pre-wrap;
+            max-height: 5.2em;
+            overflow: auto;
+        }
+
+        .cell__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: auto;
+        }
+
+        .cell__actions button {
+            padding: 0.3rem 0.5rem;
+            font-size: 10px;
+        }
+
+        .cell__actions button.picked {
+            background: var(--pick);
+            color: #fff;
+            border-color: var(--pick);
+        }
+
+        .picks-panel {
+            max-width: 1600px;
+            margin: 0 auto 2rem;
+            padding: 0 1.25rem;
+        }
+
+        .picks-panel h2 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.35rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .picks-panel pre {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 10px;
+            overflow: auto;
+            max-height: 240px;
+            margin: 0;
+        }
+
+        .picks-panel.empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Sketch Lab</h1>
+            <p>Each cell is a unique knob recipe. Re-roll to sample seeds within a recipe, or regenerate all recipes.</p>
+        </div>
+        <div class="toolbar">
+            <label>
+                Cells
+                <select id="count">
+                    <option value="6">6</option>
+                    <option value="9" selected>9</option>
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+                </select>
+            </label>
+            <button type="button" id="reroll-all" class="primary">Reroll all</button>
+            <button type="button" id="new-recipes">New recipes</button>
+            <button type="button" id="clear-picks">Clear picks</button>
+        </div>
+    </header>
+
+    <div id="grid"></div>
+
+    <section class="picks-panel empty" id="picks-panel">
+        <h2>Picked configs</h2>
+        <p style="color: var(--muted); margin: 0 0 0.5rem;">
+            Copy these into the site sketch when you settle on favorites.
+        </p>
+        <pre id="picks-json">[]</pre>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.2/lib/p5.min.js"></script>
+    <script src="sketch-lab.js"></script>
+</body>
+</html>
