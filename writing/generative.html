@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generative Art — Uday Goyat</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generative Programming Art – Uday Goyat</title>
+  <meta name="description" content="A grid of generative drawings made with p5.js.">
+  <meta name="author" content="Uday Goyat">
+  <link rel="canonical" href="https://udaygoyat45.github.io/writing/generative.html">
+  <meta property="og:site_name" content="Uday Goyat">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Generative Programming Art – Uday Goyat">
+  <meta property="og:description" content="A grid of generative drawings made with p5.js.">
+  <meta property="og:url" content="https://udaygoyat45.github.io/writing/generative.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generative Programming Art – Uday Goyat">
+  <meta name="twitter:description" content="A grid of generative drawings made with p5.js.">
+  <link rel="stylesheet" href="/css/site.css">
 </head>
-
 <body>
-    <div class="page">
-        <div id="site-sidebar" data-root="../"></div>
-
-        <div class="main">
-            <div class="main-inner">
-                <a class="back-home" data-site-home></a>
-                <h2 class="font-display prose-title">Generative Programming Art</h2>
-                <p class="prose-kicker">Made with p5.js</p>
-
-                <div class="media-grid media-grid--3">
-                    <img src="../assets/gen/1.jpg" alt="Generative art 1">
-                    <img src="../assets/gen/2.jpg" alt="Generative art 2">
-                    <img src="../assets/gen/3.jpg" alt="Generative art 3">
-                    <img src="../assets/gen/4.jpg" alt="Generative art 4">
-                    <img src="../assets/gen/5.jpg" alt="Generative art 5">
-                    <img src="../assets/gen/6.jpg" alt="Generative art 6">
-                    <img src="../assets/gen/7.jpg" alt="Generative art 7">
-                    <img src="../assets/gen/8.jpg" alt="Generative art 8">
-                    <img src="../assets/gen/9.jpg" alt="Generative art 9">
-                    <img src="../assets/gen/10.jpg" alt="Generative art 10">
-                    <img src="../assets/gen/11.jpg" alt="Generative art 11">
-                    <img src="../assets/gen/12.jpg" alt="Generative art 12">
-                </div>
-            </div>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="split">
+    <aside class="art">
+      <figure class="sheet">
+        <canvas id="sketch" tabindex="0" role="img" aria-label="Perlin flow-field drawing; click to draw a new one"></canvas>
+        <figcaption>click on the sketch if bored</figcaption>
+      </figure>
+    </aside>
+    <div class="text">
+      <header class="top">
+        <div class="col">
+          <a class="name" href="/index.html">Uday Goyat</a>
+          <nav class="links" aria-label="Site">
+            <a href="/resume.pdf">Resume</a>
+            <a href="https://www.linkedin.com/in/udaygoyat">LinkedIn</a>
+            <a href="https://www.youtube.com/channel/UCB9zbZBY_6MBwtI3PH1pjWw">YouTube</a>
+            <a href="https://github.com/udaygoyat45">GitHub</a>
+          </nav>
         </div>
+      </header>
+      <main class="col" id="content">
+        <article>
+          <h1>Generative Programming Art</h1>
+          <p class="soft">Made with p5.js</p>
+
+          <div class="pics three">
+            <img src="/assets/gen/1.jpg" alt="Generative art 1">
+            <img src="/assets/gen/2.jpg" alt="Generative art 2">
+            <img src="/assets/gen/3.jpg" alt="Generative art 3">
+            <img src="/assets/gen/4.jpg" alt="Generative art 4">
+            <img src="/assets/gen/5.jpg" alt="Generative art 5">
+            <img src="/assets/gen/6.jpg" alt="Generative art 6">
+            <img src="/assets/gen/7.jpg" alt="Generative art 7">
+            <img src="/assets/gen/8.jpg" alt="Generative art 8">
+            <img src="/assets/gen/9.jpg" alt="Generative art 9">
+            <img src="/assets/gen/10.jpg" alt="Generative art 10">
+            <img src="/assets/gen/11.jpg" alt="Generative art 11">
+            <img src="/assets/gen/12.jpg" alt="Generative art 12">
+          </div>
+        </article>
+      </main>
+      <footer class="col sm soft"><a href="mailto:udaygoyat45@gmail.com">udaygoyat45@gmail.com</a></footer>
     </div>
-
-    <script src="../site.js"></script>
+  </div>
+  <script src="/js/sketch.js"></script>
 </body>
-
 </html>
