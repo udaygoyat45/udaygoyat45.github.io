@@ -1,0 +1,370 @@
+/* Shared layout for every page.
+   System sans, 15px / 1.3. The sketch column and the text column stay put:
+   a square rail (at most 420px) beside a 460px measure from 900px up,
+   and the same stack — drawing, then text — below that. */
+
+:root {
+  --measure: 610px;
+  --ink: #151515;
+  --soft: #555;
+  --uline: #c8c8c8;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font: 15px/1.3 "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: underline 1px var(--uline);
+  text-underline-offset: 3.5px;
+}
+
+a:hover,
+a:focus-visible { text-decoration-color: currentColor; }
+
+a:focus-visible,
+#sketch:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.col {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header.top { padding: 28px 0 0; }
+
+header.top .col {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 20px;
+}
+
+.name {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.name:hover { text-decoration: underline; }
+
+nav.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 15px;
+}
+
+nav.links a { color: var(--soft); }
+
+nav.links a:hover,
+nav.links a:focus-visible { color: var(--ink); }
+
+h1 {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 44px 0 6px;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b6b6b; /* 5.3:1 on white */
+  margin: 40px 0 6px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 28px 0 4px;
+}
+
+p { margin: 0 0 14px; }
+
+/* Body under a title uses the same 14px gap as paragraphs. The h1's 6px collapses into it. */
+h1 + p:not(.soft) { margin-top: 14px; }
+
+.soft { color: var(--soft); }
+
+.sm { font-size: 15px; }
+
+h2.about { margin: 28px 0 0; }
+
+em { font-style: italic; }
+
+/* Square drawing, centred in the text measure when it is not in the side rail. */
+figure.sheet {
+  margin: 12px auto 0;
+  max-width: 920px;
+  padding: 0 20px;
+}
+
+#sketch {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 72vh;
+  cursor: crosshair;
+  background: #fff;
+}
+
+figure.sheet figcaption {
+  max-width: calc(var(--measure) - 40px);
+  margin: 4px auto 0;
+  line-height: 1.3;
+  color: var(--soft);
+}
+
+ul.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rows li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  line-height: 1.3;
+}
+
+ul.rows li .what { min-width: 0; }
+
+ul.rows li .when {
+  color: var(--soft);
+  white-space: nowrap;
+  font-size: 15px;
+  padding-top: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+ul.rows .desc {
+  color: var(--soft);
+  font-size: 15px;
+}
+
+p.email {
+  margin: 0;
+  line-height: 1.3;
+}
+
+body.home main { padding-bottom: 40px; }
+
+footer.col {
+  margin-top: 40px;
+  padding-bottom: 28px;
+}
+
+article ul { padding-left: 1.2em; }
+
+article li { margin-bottom: 8px; }
+
+article.project p { line-height: 1.3; }
+
+article.project ul.rows li { margin-bottom: 6px; }
+
+.pics {
+  display: grid;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+/* Pair: each image's flex grow is its aspect (--r), so both share one height and one bottom edge. */
+.pics.two { display: flex; }
+
+.pics.two img {
+  flex: var(--r, 1) 1 0;
+  min-width: 0;
+}
+
+.pic-nina { --r: 1.775; }
+
+.pic-chimera { --r: 1.3333; }
+
+.pics.three { grid-template-columns: repeat(3, 1fr); }
+
+.pics img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 560px) {
+  h1 { margin-top: 32px; }
+
+  /* Only a subline tucks under the title; body text keeps the 6px gap. */
+  h1:has(+ p.soft) { margin-bottom: 0; }
+
+  h1 + p.soft { line-height: 1.3; }
+
+  #sketch {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
+
+  .pics.three { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  /* Name and date on one line; the description drops to its own full-width line. */
+  ul.rows li {
+    flex-wrap: wrap;
+    gap: 0 12px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  ul.rows li:last-child { margin-bottom: 0; }
+
+  ul.rows li .when { padding-top: 0; }
+
+  ul.rows li .what { display: contents; }
+
+  ul.rows li .when {
+    order: 2;
+    margin-left: auto;
+  }
+
+  ul.rows .desc {
+    order: 3;
+    flex-basis: 100%;
+  }
+}
+
+.nowrap { white-space: nowrap; }
+
+aside.art figure.sheet {
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+aside.art figure.sheet figcaption {
+  max-width: none;
+  margin: 4px 0 0;
+}
+
+@media (max-width: 899px) {
+  aside.art { padding: 20px 20px 0; }
+
+  body.home main { padding-top: 0; }
+}
+
+@media (min-width: 900px) {
+  .split {
+    display: grid;
+    /* Later declaration in this block is the one that applies. */
+    grid-template-columns: minmax(0, min(560px, 40vw)) 460px;
+    justify-content: center;
+    column-gap: 56px;
+    padding: 0 28px;
+  }
+
+  aside.art {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    padding-top: 28px;
+  }
+
+  #sketch {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    max-height: calc(100vh - 92px);
+  }
+
+  .split .col {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Square rail, at most 420px and 32vw. Text stays 460px on the right. */
+  .split { grid-template-columns: min(420px, 32vw) 460px; }
+}
+
+/* Touch: list-row links and the top links are at least 24px tall. Desktop rows stay 20px. */
+@media (pointer: coarse) {
+  ul.rows li .what { flex: 1; }
+
+  ul.rows li .what > a:only-child {
+    display: block;
+    padding: 2.5px 0;
+  }
+
+  ul.rows li a,
+  nav.links a,
+  p.email a {
+    display: inline-block;
+    padding: 2.5px 0;
+  }
+}
+
+/* Square at every width, at most 420px. This rule follows the media queries on purpose:
+   same specificity, so it wins for aspect-ratio and max-height wherever those queries match. */
+#sketch {
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  max-height: none;
+}
+
+/* Subpages use the home shell. The first heading sits where the home About label does. */
+.split main > article > h1:first-child { margin-top: 28px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  left: -10000px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  z-index: 1;
+  padding: 8px 12px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.skip-link:not(:focus):not(:focus-visible) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  left: -10000px;
+  top: auto;
+}
